@@ -1,10 +1,20 @@
 ---
- import { SCORE_API_ENDPOINT } from "astro:env/server";
+import { SCORE_API_ENDPOINT } from "astro:env/server";
 
-   const res = await fetch( SCORE_API_ENDPOINT)
-   const ScoreData = await res.text()
+let ScoreData = 'N/A';
+
+try {
+  const res = await fetch(SCORE_API_ENDPOINT);
+
+  if (res.ok) {
+    ScoreData = (await res.text()).trim();
+  } else {
+    console.error('Error en fetch Score:', res.status, res.statusText);
+  }
+} catch (err) {
+  console.error('Error al cargar ScoreData:', err);
+}
 ---
-
 <span class="text-xs" id="score">
-    Puntuacion &#11088 {ScoreData.trim()}/5
+  Puntuación &#11088; {ScoreData}/5
 </span>
