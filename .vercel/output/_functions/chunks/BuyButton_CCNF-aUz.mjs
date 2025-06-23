@@ -1,4 +1,4 @@
-import { c as createComponent, m as maybeRenderHead, d as renderTemplate, a as createAstro, e as addAttribute, r as renderComponent } from './astro/server_CH_9mCK0.mjs';
+import { c as createComponent, m as maybeRenderHead, b as renderTemplate, a as createAstro, d as addAttribute, r as renderComponent } from './astro/server_DGXVsN46.mjs';
 import 'kleur/colors';
 import 'clsx';
 
@@ -11,7 +11,7 @@ const $$BuyButton = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$BuyButton;
   const SPAIN = "ES";
-  const country = Astro2.request.headers.get("X-Vercel-Ip-Country") ?? "ES";
+  const country = Astro2.request?.headers?.get?.("X-Vercel-IP-Country") ?? "ES";
   const storeCountry = country === SPAIN ? "spain" : "usa";
   const countryName = country === SPAIN ? "Espa\xF1a" : "Estados Unidos";
   const { buy } = Astro2.props;
