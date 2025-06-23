@@ -1,19 +1,29 @@
 // @ts-check
 import { defineConfig, envField } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import vercel from '@astrojs/vercel';
-import vercelServerless from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel/serverless'; 
 
 export default defineConfig({
-  output: 'server', 
+  output: 'server',
   vite: {
     plugins: [tailwindcss()]
   },
   env: {
     schema: {
-      SHOW_BUY_BUTTON: envField.boolean({ default: true, context: "server", access: "public" }),
-      SCORE_API_ENDPOINT: envField.string({ context: 'server', access: 'public' })
+      SHOW_BUY_BUTTON: envField.boolean({ 
+        default: true, 
+        context: "server", 
+        access: "public" 
+      }),
+      SCORE_API_ENDPOINT: envField.string({
+        context: 'server', 
+        access: 'public'
+      })
     }
   },
-  adapter: vercelServerless(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    }
+  })
 });
